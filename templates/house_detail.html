@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="card mb-5" style="border-radius: 5px;">
+    <div class="card-body" style="text-align: center;">
+        <h3>Houses Details</h3>
+    </div>
+    
+</div>
+
+<div class="card mb-5" style="border-radius: 5px;">
+    <div class="card-body">
+        <b>House Boss: </b><h5>{{house_detail.house_boss}}</h5> <br>
+        <b>House Number: </b><h5>{{house_detail.house_number}}</a></h5> <br>
+        <b>A or B: </b><h5>{{house_detail.a_b}}</a></h5> <br>
+        <b>Neighborhood: </b><h5>{{house_detail.neighborhood}}</a></h5> <br>
+        <b>Status: </b><h5>{{house_detail.status}}</a></h5> <br>
+        <b>Area m kv: </b><h5>{{house_detail.area_kv_m}}</h5> <br>
+        <b>Peoples: </b><h5>{{house_detail.people}}</h5> <br>
+        <b>Created: </b><h5>{{house_detail.created}}</h5> <br>
+
+    </div>
+</div>
+
+
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+    <button class="btn btn-hover btn-primary mt-10" type="submit">
+        <b><a href="{% url 'houses_url' %}">To List</a></b>
+    </button>
+</div>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="card mb-5" style="border-radius: 5px;">
+    <div class="card-body" style="text-align: center;">
+        <h3>MFY Details</h3>
+    </div>
+    
+</div>
+
+<div class="card mb-5" style="border-radius: 5px;">
+    <div class="card-body">
+        <b>Title: </b><h5>{{MFY_detail.title}}</h5> <br>
+        <b>Chairman: </b><h5>{{MFY_detail.chairman}}</a></h5> <br>
+        <b>Area km kv: </b><h5>{{MFY_detail.area_kv_km}}</h5> <br>
+        <b>Number Houses: </b><h5>{{MFY_detail.number_houses}}</h5> <br>
+        <b>Peoples: </b><h5>{{MFY_detail.people}}</h5> <br>
+        <b>Created: </b><h5>{{MFY_detail.created}}</h5> <br>
+
+    </div>
+</div>
+
+
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+    <button class="btn btn-hover btn-primary mt-10" type="submit">
+        <b><a href="{% url 'MFY_url' %}">To List</a></b>
+    </button>
+</div>
+{% endblock content %}

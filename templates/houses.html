@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+  table {
+    border-collapse: collapse; /* Jadval chiziqlarini birlashtirish */
+    width: 100%; /* Jadval kengligini avtomatik qilish */
+  }
+  th, td {
+    padding: 8px; /* Ichki bo'shliq */
+    text-align: center; /* Matnni gorizontal o'rtaga olish */
+    vertical-align: middle; /* Matnni vertikal o'rtaga olish */
+    border: 1px solid #ddd; /* Jadval chiziqlari */
+  }
+  th {
+    background-color: #f4f4f4; /* Sarlavha foni */
+    font-weight: bold;
+  }
+</style>
+
+
+
+<div class="card">  
+  <div class="card-header" style="border-radius: 10px; text-align: center;">
+    <h3>Houses</h3>
+  </div>
+  <div class="card-body">
+    <table> 
+      <thead>
+        <tr>
+          <th style="width: 10%;" scope="col">#</th>
+          <th scope="col">House Number</th>
+          <th scope="col">A or B</th>
+          <th scope="col">Neighborhood</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in houses %}
+        <tr>
+          <td scope="row">{{ forloop.counter }}</td>
+          <td><a href="{% url 'house_detail_url' i.id %}">{{ i.house_number }}</a></td>
+          <td>{{ i.a_b }}</td>
+          <td>{{ i.neighborhood }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

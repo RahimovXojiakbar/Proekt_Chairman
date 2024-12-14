@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+  table {
+    border-collapse: collapse; /* Jadval chiziqlarini birlashtirish */
+    width: 100%; /* Jadval kengligini avtomatik qilish */
+  }
+  th, td {
+    padding: 8px; /* Ichki bo'shliq */
+    text-align: center; /* Matnni gorizontal o'rtaga olish */
+    vertical-align: middle; /* Matnni vertikal o'rtaga olish */
+    border: 1px solid #ddd; /* Jadval chiziqlari */
+  }
+  th {
+    background-color: #f4f4f4; /* Sarlavha foni */
+    font-weight: bold;
+  }
+</style>
+
+
+<div class="card">  
+  <div class="card-header" style="text-align: center; border-radius: 10px;">
+    <h3>Chairmans</h3>
+  </div>
+  <div class="card-body"> 
+    <table>   
+      <thead>
+        <tr>
+          <th style="width: 10%;" scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Information</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in chairmans %}
+        <tr>
+          <td scope="row">{{ forloop.counter }}</td>
+          <td><a href="{% url 'chairman_detail_url' i.id  %}">{{ i.name }}</a></td>
+          <td>{{ i.information }}</td>
+          <td>{{ i.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock content %}
