@@ -3,7 +3,7 @@ from main import models
 
 
 def ChairmansView(request):
-    model = models.Chairman.objects.all()
+    model = models.Chairman.objects.filter()
     context = {
         'chairmans':model
     }
@@ -86,11 +86,15 @@ def HouseDetailView(request, id):
 
 def HumanDetailView(request, id):
     model = models.Human.objects.get(id=id)
+    houses = models.House.objects.all()
     context = {
-        'human_detail':model
+        'human_detail':model,
+        'houses':houses
     }
     return render(request, 'human_detail.html', context)
 
 
 def index_view(request):
     return render(request, 'index.html', )
+
+

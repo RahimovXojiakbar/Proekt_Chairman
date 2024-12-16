@@ -14,19 +14,15 @@
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body">
         <b>Name: </b><h5>{{human_detail.fullname}}</h5> <br>
-        <b>BIO: </b><h5>{{human_detail.BIO}}</a></h5> <br>
+        <b>BIO: </b><h5>{{human_detail.BIO}}</h5> <br>
         <b>Status: </b><h5>{{human_detail.status}}</a></h5> <br>
         <b>Information: </b><h5>{{human_detail.information}}</a></h5> <br>
-        <b>House: </b><h5>{{human_detail.house}}</a></h5> <br>
+        <b>House: </b><h5><a href="{% url 'house_detail_url' human_detail.house.id %}">{{human_detail.house}}</a></h5> 
         <b>Created: </b><h5>{{human_detail.created}}</h5> <br>
 
     </div>
 </div>
 
 
-<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-    <button class="btn btn-hover btn-primary mt-10" type="submit">
-        <b><a href="{% url 'humans_url' %}">To List</a></b>
-    </button>
-</div>
+        <b style="display: flex; justify-content: center; align-items: center;"><a class="btn btn-hover btn-secondary mt-10"  type="submit" href="{% url 'humans_url' %}">To List</a></b>
 {% endblock content %}
