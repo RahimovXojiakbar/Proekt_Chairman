@@ -86,10 +86,8 @@ def HouseDetailView(request, id):
 
 def HumanDetailView(request, id):
     model = models.Human.objects.get(id=id)
-    houses = models.House.objects.all()
     context = {
         'human_detail':model,
-        'houses':houses
     }
     return render(request, 'human_detail.html', context)
 
