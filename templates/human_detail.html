@@ -6,23 +6,35 @@
 
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body" style="text-align: center;">
-        <h3>Human Details</h3>
+        <h3 style="color: rgb(121, 109, 104);">Human Details</h3>
     </div>
     
 </div>
 
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body">
-        <b>Name: </b><h5>{{human_detail.fullname}}</h5> <br>
-        <b>BIO: </b><h5>{{human_detail.BIO}}</h5> <br>
-        <b>Status: </b><h5>{{human_detail.status}}</a></h5> <br>
-        <b>Information: </b><h5>{{human_detail.information}}</a></h5> <br>
-        <b>House: </b><h5><a href="{% url 'house_detail_url' human_detail.house.id %}">{{human_detail.house}}</a></h5> 
-        <b>Created: </b><h5>{{human_detail.created}}</h5> <br>
+        <b>Name: </b><h5 style="color: rgb(121, 109, 104);">{{human_detail.fullname}}</h5> <br>
+        <b>BIO: </b><h5 style="color: rgb(121, 109, 104);">{{human_detail.BIO}}</h5> <br>
+        <b>Status: </b><h5 style="color: rgb(121, 109, 104);">{{human_detail.status}}</a></h5> <br>
+        <b>Information: </b><h5 style="color: rgb(121, 109, 104);">{{human_detail.information}}</a></h5> <br>
+        <b>House: </b><h5><a   style="color: rgb(138, 58, 213);"  href="{% url 'house_detail_url' human_detail.house.id %}">{{human_detail.house}}</a></h5> 
+        <b>Created: </b><h5 style="color: rgb(121, 109, 104);">{{human_detail.created}}</h5> <br>
 
     </div>
 </div>
 
 
-        <b style="display: flex; justify-content: center; align-items: center;"><a class="btn btn-hover btn-secondary mt-10"  type="submit" href="{% url 'humans_url' %}">To List</a></b>
+<div class="row mt-15" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-auto">
+        <b><a class="btn btn-hover btn-success"  type="submit" href="{{ request.META.HTTP_REFERER }}">Back</a></b>
+
+    </div>
+    <div class="col-auto">
+        <b><a class="btn btn-hover btn-secondary"  type="submit" href="{% url 'humans_url' %}">To List</a></b>
+    </div>
+</div>
+
+
+
 {% endblock content %}
+

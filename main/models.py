@@ -23,7 +23,7 @@ class MFY(models.Model):
     number_houses = models.PositiveIntegerField()
     people = models.PositiveIntegerField(default=0)
     created = models.DateField(auto_now_add=True)
-
+    
     def __str__(self):
         return self.title
 
@@ -51,6 +51,9 @@ class House(models.Model):
     area_kv_m = models.DecimalField(decimal_places=2, max_digits=15)
     created = models.DateField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['house_number', 'a_b']
+
     def __str__(self) -> str:
         return f"{self.house_number} {self.a_b}"
     
@@ -65,5 +68,7 @@ class Human(models.Model):
 
     def __str__(self):
         return self.fullname
+
+
 
 

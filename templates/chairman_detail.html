@@ -6,23 +6,31 @@
 
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body" style="text-align: center;">
-        <h3>Chairman Details</h3>
+        <h3 style="color: rgb(121, 109, 104);">Chairman Details</h3>
     </div>
     
 </div>
 
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body">
-        <b>Name: </b><h5>{{chairman_detail.name}}</h5> <br>
-        <b>BIO: </b><h5>{{chairman_detail.BIO}}</h5> <br>
-        <b>Information: </b><h5>{{chairman_detail.information}}</h5> <br>
-        <b>Status: </b><h5>{{chairman_detail.status}}</h5> <br>
-        <b>Created: </b><h5>{{chairman_detail.created}}</h5> <br>
+        <b>Name: </b><h5 style="color: rgb(121, 109, 104);">{{chairman_detail.name}}</h5> <br>
+        <b>BIO: </b><h5 style="color: rgb(121, 109, 104);">{{chairman_detail.BIO}}</h5> <br>
+        <b>Information: </b><h5 style="color:  rgb(121, 109, 104);">{{chairman_detail.information}}</h5> <br>
+        <b>Status: </b><h5 style="color:  rgb(121, 109, 104);">{{chairman_detail.status}}</h5> <br>
+        <b>Created: </b><h5 style="color:  rgb(121, 109, 104);;">{{chairman_detail.created}}</h5> <br>
 
     </div>
 </div>
 
 
-<b style="display: flex; justify-content: center; align-items: center;"><a class="btn btn-hover btn-secondary mt-10"  type="submit" href="{% url 'humans_url' %}">To List</a></b>
+<div class="row mt-5" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-auto">
+        <b><a class="btn btn-hover btn-success"  type="submit" href="{{ request.META.HTTP_REFERER }}">Back</a></b>
+    </div>
+    <div class="col-auto">
+        <b><a class="btn btn-hover btn-secondary"  type="submit" href="{% url 'humans_url' %}">To List</a></b>
+    </div>
+</div>
+
 
 {% endblock content %}

@@ -76,7 +76,7 @@ print('Add Neighborhoods')
 # =======================================================================================================
 
 
-for _ in range(395):
+for _ in range(300):
     houses = models.House.objects.create(
         house_boss = fake.name_male(),
         house_number = round(random.uniform(1, 99)),
@@ -100,7 +100,7 @@ for _ in range(1550):
     status = fake.random_element(['Kindergarten', 'Schoolboy', 'Student', 'Worker'])
     
     if status in ['Kindergarten', 'Schoolboy', 'Student']:
-        information = 'No'
+        information = 'NO'
     else:
         information = fake.random_element(['NO', 'MIDDLE', 'HIGH'])
 

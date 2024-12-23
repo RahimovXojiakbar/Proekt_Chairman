@@ -25,6 +25,27 @@
 <div class="card">  
   <div class="card-header" style="border-radius: 10px; text-align: center;">
     <h3>MFY</h3>
+    <form action="{% url 'MFY_url' %}" method="get" class="row mt-3">
+      {% csrf_token %}
+
+
+      <div class="col">
+        <label for="autoSizingSelect" class="visually-hidden">Sort By</label>
+        <select name="sort" id="autoSizingSelect" style="background-color: white; border: solid 1px rgb(134, 123, 123);">
+          <option value="title">A-z</option>
+          <option value="area_kv_km">Area</option>
+          <option value="number_houses">Houses</option>
+          <option value="people">People</option>
+          <option value="created">Created</option>
+        </select>
+      </div>
+        
+      
+      <div class="col-auto">
+          <button type="submit" class="btn btn-secondary btn-hover" style="height: 48px;">Search</button>
+      </div>
+    </form>
+
   </div>
   <div class="card-body">
     <table> 

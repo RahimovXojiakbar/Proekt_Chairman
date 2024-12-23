@@ -6,26 +6,32 @@
 
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body" style="text-align: center;">
-        <h3>Houses Details</h3>
+        <h3 style="color: rgb(121, 109, 104);">Houses Details</h3>
     </div>
     
 </div>
 
 <div class="card mb-5" style="border-radius: 5px;">
     <div class="card-body">
-        <b>House Boss: </b><h5>{{house_detail.house_boss}}</h5> <br>
-        <b>House Number: </b><h5>{{house_detail.house_number}}</a></h5> <br>
-        <b>A or B: </b><h5>{{house_detail.a_b}}</a></h5> <br>
-        <b>Neighborhood: </b><h5><a href="{% url 'neighborhood_detail_url' house_detail.neighborhood.id %}">{{house_detail.neighborhood}}</a></a></h5> <br>
-        <b>Status: </b><h5>{{house_detail.status}}</a></h5> <br>
-        <b>Area m kv: </b><h5>{{house_detail.area_kv_m}}</h5> <br>
-        <b>Peoples: </b><h5>{{house_detail.people}}</h5> <br>
-        <b>Created: </b><h5>{{house_detail.created}}</h5> <br>
+        <b>House Boss: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.house_boss}}</h5> <br>
+        <b>House Number: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.house_number}}</a></h5> <br>
+        <b>A or B: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.a_b}}</a></h5> <br>
+        <b>Neighborhood: </b><h5><a   style="color: rgb(138, 58, 213);"  href="{% url 'neighborhood_detail_url' house_detail.neighborhood.id %}">{{house_detail.neighborhood}}</a></a></h5> <br>
+        <b>Status: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.status}}</a></h5> <br>
+        <b>Area m kv: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.area_kv_m}}</h5> <br>
+        <b>Peoples: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.people}}</h5> <br>
+        <b>Created: </b><h5 style="color: rgb(121, 109, 104);">{{house_detail.created}}</h5> <br>
 
     </div>
 </div>
 
 
-<b style="display: flex; justify-content: center; align-items: center;"><a class="btn btn-hover btn-secondary mt-10"  type="submit" href="{% url 'humans_url' %}">To List</a></b>
-
+<div class="row mt-5" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-auto">
+        <b><a class="btn btn-hover btn-success"  type="submit" href="{{ request.META.HTTP_REFERER }}">Back</a></b>
+    </div>
+    <div class="col-auto">
+        <b><a class="btn btn-hover btn-secondary"  type="submit" href="{% url 'houses_url' %}">To List</a></b>
+    </div>
+</div>
 {% endblock content %}

@@ -1,85 +1,54 @@
-from django.shortcuts import render
 from main import models
 from main import serializers 
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListAPIView
-from django_filters.rest_framework import  DjangoFilterBackend
-from rest_framework.filters import SearchFilter
+
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.viewsets import ModelViewSet
+
+
 
 class MyPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 6
     page_size_query_param = 'page_size'
     max_page_size = 100
 
 
-class ChairmanListView(ListAPIView):
+
+
+
+
+
+class  ChairmanViewSet(ModelViewSet):
     queryset = models.Chairman.objects.all()
-    serializer_class = serializers.ChairmanListSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['information', 'status']
-    search_fields = ['name']
-    pagination_class  = MyPagination
-
-
-class MFYListView(ListAPIView):
-    queryset = models.MFY.objects.all()
-    serializer_class = serializers.MFYListSerializer
-    filter_backends = [SearchFilter]
-    search_fields = ['title']
-    pagination_class  = MyPagination
-
-
-class NeighborhoodListView(ListAPIView):
-    queryset = models.Neighborhood.objects.all()
-    serializer_class = serializers.NeighborhoodListSerializer
-    filter_backends = [SearchFilter]
-    search_fields = ['title']
-    pagination_class  = MyPagination
-
-
-class HouseListView(ListAPIView):
-    queryset = models.House.objects.all()
-    serializer_class = serializers.HouseListSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['neighborhood', 'a_b']
-    search_fields = ['house_number']
-    pagination_class  = MyPagination
-
-
-class HumanListView(ListAPIView):
-    queryset = models.Human.objects.all()
-    serializer_class = serializers.HumanListSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['status', 'information', 'house']
-    search_fields = ['fullname']
-    pagination_class  = MyPagination
-
+    serializer_class = serializers.ChairmanSerializer
+    pagination_class = MyPagination
 
 
 # -------------------------------------------------------------------------------------------
 
 
-class ChairmanDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = models.Chairman.objects.all()
-    serializer_class = serializers.ChairmanDetailSerializer
-
-
-class MFYDetailView(RetrieveUpdateDestroyAPIView):
+class MFYViewSet(ModelViewSet):
     queryset = models.MFY.objects.all()
-    serializer_class = serializers.MFYDetailSerializer
+    serializer_class = serializers.MFYSerializer
+    pagination_class = MyPagination
+
+# -------------------------------------------------------------------------------------------
 
 
-class NeighborhoodDetailView(RetrieveUpdateDestroyAPIView):
+class NeighborhoodViewSet(ModelViewSet):
     queryset = models.Neighborhood.objects.all()
-    serializer_class = serializers.NeighborhoodDetailSerializer
+    serializer_class = serializers.NeighborhoodSerializer
+    pagination_class = MyPagination
+# -------------------------------------------------------------------------------------------
 
 
-class HouseDetailView(RetrieveUpdateDestroyAPIView):
+class HouseViewSet(ModelViewSet):
     queryset = models.House.objects.all()
-    serializer_class = serializers.HouseDetailSerializer
+    serializer_class = serializers.HouseSerializer
+    pagination_class = MyPagination
+# -------------------------------------------------------------------------------------------
 
-
-class HumanDetailView(RetrieveUpdateDestroyAPIView):
+class HumanViewSet(ModelViewSet):
     queryset = models.Human.objects.all()
-    serializer_class = serializers.HumanDetailSerializer
+    serializer_class = serializers.HumanSerializer
+    pagination_class = MyPagination
     

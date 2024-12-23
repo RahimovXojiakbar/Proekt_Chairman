@@ -25,6 +25,47 @@
 <div class="card">  
   <div class="card-header" style="border-radius: 10px; text-align: center;">
     <h3>Humans</h3>
+    <form action="{% url 'humans_url' %}" method="get" class="row mt-3">
+      {% csrf_token %}
+      <div class="col">
+        <label for="houseSelect" class="visually-hidden">House</label>
+        <select name="house" id="houseSelect" style="background-color: white; border: solid 1px rgb(134, 123, 123);">
+            <option value="0" selected>Choose House</option>
+            {% for house in houses %}
+                <option value="{{ house.id }}">{{ house }}</option>
+            {% endfor %}
+        </select>
+    </div>
+      <div class="col">
+        <label for="autoSizingSelect" class="visually-hidden">Status</label>
+        <select style="background-color: white; border: solid 1px rgb(134, 123, 123);" name="status" id="autoSizingSelect">
+          <option value="0" selected>Choose status</option>
+          <option value="Kindergarten">Kindergarten</option>
+          <option value="Schoolboy">Schoolboy</option>
+          <option value="Student">Student</option>
+          <option value="Worker">Worker</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="autoSizingSelect" class="visually-hidden">Information</label>
+        <select name="information" id="autoSizingSelect" style="background-color: white; border: solid 1px rgb(134, 123, 123);">
+          <option value="0" selected>Choose Information</option>
+          <option value="NO">NO</option>
+          <option value="MIDDLE">MIDDLE</option>
+          <option value="HIGH">HIGH</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="autoSizingSelect" class="visually-hidden">Sort By</label>
+        <select name="sort" id="autoSizingSelect" style="background-color: white; border: solid 1px rgb(134, 123, 123);">
+          <option value="fullname">A-z</option>
+          <option value="created">Created</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-secondary btn-hover" style="height: 48px;">Search</button>
+      </div>
+    </form>
   </div>
   <div class="card-body">
     <table> 
