@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    
+    <h4 class="text-center mt-4">Search Results</h4>
+    {% if query %}
+    <div class="card text-center mt-5">
+        <div class="card-header">
+            <p class="text-center">Results for "<strong>{{ query }}</strong>":</p>
+        </div>
+
+
+        <div class="card-body">
+            <div class="row">
+                <!-- Chairman Results -->
+                <div class="col">
+                    <h5 class="text-center">Chairmen</h5>
+                    {% if chairman_results %}
+                        <ul class="list-group">
+                            {% for chairman in chairman_results %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'chairman_detail_url' chairman.id %}">{{ chairman.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No Chairmen Found.</p>
+                    {% endif %}
+                </div>
+    
+                <!-- MFY Results -->
+                <div class="col">
+                    <h5 class="text-center">MFY</h5>
+                    {% if mfy_results %}
+                        <ul class="list-group">
+                            {% for mfy in mfy_results %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'MFY_detail_url' mfy.id %}">{{ mfy.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No MFY Found.</p>
+                    {% endif %}
+                </div>
+    
+                <!-- Neighborhood Results -->
+                <div class="col">
+                    <h5 class="text-center">Neighborhoods</h5>
+                    {% if neighborhood_results %}
+                        <ul class="list-group">
+                            {% for neighborhood in neighborhood_results %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'neighborhood_detail_url' neighborhood.id %}">{{ neighborhood.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No Neighborhoods Found.</p>
+                    {% endif %}
+                </div>
+            
+                <!-- House Results -->
+                <div class="col">
+                    <h5 class="text-center">Houses</h5>
+                    {% if house_results %}
+                        <ul class="list-group">
+                            {% for house in house_results %}
+                                <li class="list-group-item">
+                                    House Number: <a href="{% url 'house_detail_url' house.id %}">{{ house.house_number }}</a> 
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No Houses Found.</p>
+                    {% endif %}
+                </div>
+    
+                <!-- Human Results -->
+                <div class="col">
+                    <h5 class="text-center">Humans</h5>
+                    {% if human_results %}
+                        <ul class="list-group">
+                            {% for human in human_results %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'human_detail_url' human.id %}">{{ human.fullname }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No Humans Found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% else %}
+        <p class="text-center">Please enter a search query.</p>
+    {% endif %}
+</div>
+{% endblock %}

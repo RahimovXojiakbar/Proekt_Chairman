@@ -21,7 +21,7 @@
 </style>
 
 
-<div class="card">  
+<div class="card">
   <div class="card-header" style="text-align: center; border-radius: 10px;">
     <h3>Chairmans</h3>
     <form action="{% url 'chairmans_url' %}" class="row mt-3" method="get">
@@ -55,7 +55,6 @@
     </form>
   </div>
   <div class="card-body"> 
-    
     <table>   
       <thead>
         <tr>
@@ -66,7 +65,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for i in chairmans %}
+        {% for i in page_obj %}
         <tr>
           <td scope="row">{{ forloop.counter }}</td>
           <td><a href="{% url 'chairman_detail_url' i.id  %}">{{ i.name }}</a></td>
@@ -77,6 +76,37 @@
       </tbody>
     </table>
   </div>
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center mt-3 mb-5">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.information %}&information={{ request.GET.information }}{% endif %}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <li class="page-item"><a class="page-link" href="?page={{ num }}{% if request.GET.information %}&information={{ request.GET.information }}{% endif %}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">{{ num }}</a></li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.information %}&information={{ request.GET.information }}{% endif %}{% if request.GET.status %}&status={{ request.GET.status }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
 </div>
+
 
 {% endblock content %}
