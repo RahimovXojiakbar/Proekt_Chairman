@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_ckeditor_5',
     'main',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [

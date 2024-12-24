@@ -16,6 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Mahalla, Fuqarolar",
+        description="Bu loyiha malum bir rais tomonida boshqariladigan hududni malumotlarini ko'rish, saqlash, o'zgartirish, o'chirish hamda boshqarish imkoniyatini beradi",
+        contact=openapi.Contact(email="rahimovxojiakbar69@gmail.com"),
+        default_version='1.0.0',
+        license=openapi.License(name='Loyiha Listsenziyasi'),
+    ),
+    public=True,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +37,8 @@ urlpatterns = [
     path('dashboard/', include('main.dashboard.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
+    path('swagger/', schema_view.with_ui(
+        'swagger', cache_timeout=0), name='schema-swagger'),
+    path('redoc/', schema_view.with_ui(
+        'redoc', cache_timeout=0), name='schema-redoc')
     ]
